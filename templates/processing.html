@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Converting Playlist | Frespo</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-black text-white min-h-screen flex items-center justify-center">
+
+    <div class="w-full max-w-2xl px-8">
+
+        <div class="text-center">
+
+            <h1 class="text-5xl font-bold mb-6">
+                Converting Your Playlist
+            </h1>
+
+            <p class="text-zinc-400 text-lg">
+                Frespo is preparing your playlist conversion.
+            </p>
+
+        </div>
+
+        <div class="bg-zinc-900 rounded-3xl p-10 border border-zinc-800 mt-12">
+
+            <div class="flex justify-center mb-8">
+
+                <div class="w-16 h-16 border-4 border-zinc-700 border-t-green-500 rounded-full animate-spin">
+                </div>
+
+            </div>
+
+            <h2 class="text-center text-2xl font-semibold mb-4">
+                Waiting for Authentication
+            </h2>
+
+            <p class="text-center text-zinc-400 leading-relaxed">
+                If a Google authentication window has opened,
+                please complete the sign-in process.
+            </p>
+
+            <p class="text-center text-zinc-400 leading-relaxed mt-2">
+                Once authentication is complete,
+                Frespo will begin transferring your songs automatically.
+            </p>
+
+        </div>
+
+        <div class="text-center mt-8">
+
+            <div class="inline-flex items-center gap-3 text-green-400">
+
+                <div class="w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
+
+                <span>
+                    Conversion will begin shortly...
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+<script>
+
+async function checkStatus() {
+
+    let response = await fetch("/status");
+    let data = await response.json();
+
+    if(data.error){
+
+        //alert(data.error);
+        window.location.href="/error";
+
+    return;
+}
+
+    if (data.completed) {
+
+        window.location.href = "/success";
+
+    }
+}
+
+setInterval(checkStatus, 3000);
+
+</script>
+</html>

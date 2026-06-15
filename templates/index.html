@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <title>Frespo</title>
+  <link rel="icon" type="image/png" href="/static/frespo_favicon_optimized_64x64.png">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+</head>
+
+<body class="bg-black text-white min-h-screen">
+
+  <!-- NAVBAR -->
+  <nav class="flex items-center justify-between px-8 py-5 border-b border-zinc-800">
+
+    
+
+      <div class="flex items-center gap-3">
+
+    <img
+        src="/static/logofrespo.jpeg"
+        alt="Frespo Logo"
+        class="w-14 h-14 object-contain"
+    >
+
+    </div>
+
+    <div class="flex items-center gap-4">
+
+      <button id="guidefrespo" class="bg-zinc-900 hover:bg-zinc-800 px-5 py-2 rounded-xl border border-zinc-700">
+        Docs
+      </button>
+
+      <button class="bg-green-500 hover:bg-green-600 text-black px-5 py-2 rounded-xl font-semibold">
+        GitHub
+      </button>
+
+    </div>
+
+  </nav>
+
+  <!-- HERO SECTION -->
+   
+  <section class="flex flex-col items-center justify-center text-center px-6 mt-24">
+
+    <p class="text-green-500 font-semibold uppercase tracking-wider">
+      Spotify → YouTube Playlist Converter
+    </p>
+
+    
+    <h1 class="text-6xl font-bold max-w-5xl leading-tight mt-6">
+
+      Convert Spotify Playlists
+      Into YouTube Playlists
+      Instantly
+
+    </h1>
+
+    <p class="text-zinc-400 text-lg mt-8 max-w-3xl leading-relaxed">
+
+      Frespo automatically fetches songs from Spotify,
+      finds the best YouTube matches using APIs,
+      and creates a ready-to-use YouTube playlist for you.
+
+    </p>
+
+    <!-- INPUT SECTION -->
+    <div class="w-full max-w-4xl mt-14 flex flex-col md:flex-row gap-4">
+
+      <input
+        id="playlist_url"
+        type="text"
+        placeholder="Paste Spotify Playlist URL..."
+        class="flex-1 bg-zinc-900 border border-zinc-700 rounded-2xl px-6 py-5 outline-none text-lg focus:border-green-500"
+      />
+
+      <button
+        id="convert_btn"
+        class="bg-green-500 hover:bg-green-600 text-black px-10 py-5 rounded-2xl text-lg font-bold transition-all"
+      >
+        Convert Playlist
+      </button>
+
+    </div>
+
+    <!-- API STATUS -->
+    <div class="flex flex-wrap items-center justify-center gap-6 mt-10 text-zinc-400 text-sm">
+
+      <div class="flex items-center gap-2">
+        <div class="w-3 h-3 rounded-full bg-green-500"></div>
+        FastAPI Backend Active
+      </div>
+
+      <div class="flex items-center gap-2">
+        <div class="w-3 h-3 rounded-full bg-green-500"></div>
+        PostgreSQL Connected
+      </div>
+
+      <div class="flex items-center gap-2">
+        <div class="w-3 h-3 rounded-full bg-green-500"></div>
+        YouTube API Integrated
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- FEATURES -->
+  <section class="mt-32 px-8">
+
+    <h2 class="text-4xl font-bold text-center mb-16">
+      Why Frespo?
+    </h2>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+
+      <!-- CARD -->
+      <div class="bg-zinc-900 border border-zinc-800 rounded-3xl p-8">
+
+        <div class="text-5xl mb-6">
+          🎵
+        </div>
+
+        <h3 class="text-2xl font-bold mb-4">
+          Playlist Conversion
+        </h3>
+
+        <p class="text-zinc-400 leading-relaxed">
+          Convert entire Spotify playlists into YouTube playlists with a single click.
+        </p>
+
+      </div>
+
+      <!-- CARD -->
+      <div class="bg-zinc-900 border border-zinc-800 rounded-3xl p-8">
+
+        <div class="text-5xl mb-6">
+          ⚡
+        </div>
+
+        <h3 class="text-2xl font-bold mb-4">
+          FastAPI Backend
+        </h3>
+
+        <p class="text-zinc-400 leading-relaxed">
+          Powered by FastAPI, PostgreSQL, and YouTube APIs for fast conversions.
+        </p>
+
+      </div>
+
+      <!-- CARD -->
+      <div class="bg-zinc-900 border border-zinc-800 rounded-3xl p-8">
+
+        <div class="text-5xl mb-6">
+          🚀
+        </div>
+
+        <h3 class="text-2xl font-bold mb-4">
+          Smart Matching
+        </h3>
+
+        <p class="text-zinc-400 leading-relaxed">
+          Finds the best YouTube song matches automatically using search pipelines.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- SONGS SECTION -->
+  <section class="mt-32 px-8 pb-24">
+
+    <div class="flex items-center justify-between mb-10">
+
+      <h2 class="text-4xl font-bold">
+        Recently Converted Songs
+      </h2>
+
+      <button class="bg-zinc-900 border border-zinc-700 px-5 py-3 rounded-xl hover:bg-zinc-800">
+        View All
+      </button>
+
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+      <!-- SONG CARD -->
+      <div class="bg-zinc-900 border border-zinc-800 rounded-2xl p-6">
+
+        <div class="flex items-start justify-between">
+
+          <div>
+
+            <h3 class="text-xl font-bold">
+              Believer
+            </h3>
+
+            <p class="text-zinc-400 mt-2">
+              Imagine Dragons - Believer
+            </p>
+
+          </div>
+
+          <div class="bg-red-500 px-3 py-1 rounded-full text-sm font-bold">
+            YouTube
+          </div>
+
+        </div>
+
+        <a
+          href="#"
+          class="inline-block mt-6 bg-green-500 hover:bg-green-600 text-black px-5 py-3 rounded-xl font-semibold"
+        >
+          Open Song
+        </a>
+
+      </div>
+
+      <!-- SONG CARD -->
+      <div class="bg-zinc-900 border border-zinc-800 rounded-2xl p-6">
+
+        <div class="flex items-start justify-between">
+
+          <div>
+
+            <h3 class="text-xl font-bold">
+              Faded
+            </h3>
+
+            <p class="text-zinc-400 mt-2">
+              Alan Walker - Faded
+            </p>
+
+          </div>
+
+          <div class="bg-red-500 px-3 py-1 rounded-full text-sm font-bold">
+            YouTube
+          </div>
+
+        </div>
+
+        <a
+          href="#"
+          class="inline-block mt-6 bg-green-500 hover:bg-green-600 text-black px-5 py-3 rounded-xl font-semibold"
+        >
+          Open Song
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+    <script src="/static/css/js/script.js"></script>
+</body>
+</html>

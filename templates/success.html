@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Playlist Converted | Frespo</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-black text-white min-h-screen overflow-hidden">
+
+    <!-- Background Glow -->
+    <div class="absolute inset-0">
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-green-500/20 blur-[180px] rounded-full"></div>
+    </div>
+
+    <div class="relative z-10 flex flex-col items-center justify-center min-h-screen px-6">
+
+        <!-- Success Icon -->
+        <div class="w-32 h-32 rounded-full bg-green-500/20 border border-green-500 flex items-center justify-center mb-8">
+
+            <svg xmlns="http://www.w3.org/2000/svg"
+                 class="w-16 h-16 text-green-400"
+                 fill="none"
+                 viewBox="0 0 24 24"
+                 stroke="currentColor">
+
+                <path stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="3"
+                      d="M5 13l4 4L19 7"/>
+
+            </svg>
+
+        </div>
+
+        <!-- Heading -->
+        <h1 class="text-6xl font-bold text-center">
+            Playlist Converted
+        </h1>
+
+        <p class="text-green-400 text-xl mt-4 font-medium">
+            Transfer completed successfully
+        </p>
+
+        <p class="text-zinc-400 text-center max-w-2xl mt-6 text-lg leading-relaxed">
+            Frespo successfully converted your Spotify playlist
+            and created a YouTube playlist with the matched tracks.
+            Your playlist is now ready to listen to.
+        </p>
+
+        <!-- Stats Card -->
+        <div class="mt-12 bg-zinc-900/70 backdrop-blur-lg border border-zinc-800 rounded-3xl p-8 w-full max-w-xl">
+
+            <div class="grid grid-cols-2 gap-8 text-center">
+
+                <div>
+                    <h3 class="text-zinc-500 uppercase text-sm tracking-wider">
+                        Status
+                    </h3>
+
+                    <p class="text-green-400 text-2xl font-bold mt-2">
+                        Complete
+                    </p>
+                </div>
+
+                <div>
+                    <h3 class="text-zinc-500 uppercase text-sm tracking-wider">
+                        Platform
+                    </h3>
+
+                    <p class="text-red-400 text-2xl font-bold mt-2">
+                        YouTube
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Buttons -->
+        <div class="flex flex-col md:flex-row gap-5 mt-12">
+
+            <a
+                href="{{ playlist_url }}"
+                target="_blank"
+                class="bg-green-500 hover:bg-green-600 text-black px-10 py-4 rounded-2xl font-bold text-lg transition-all"
+            >
+                🎵 Open Playlist
+            </a>
+
+            <a
+                href="/"   
+                class="bg-zinc-900 border border-zinc-700 hover:bg-zinc-800 px-10 py-4 rounded-2xl font-bold text-lg transition-all"
+            >
+                Convert Another Playlist
+            </a>
+
+        </div>
+
+        <!-- Footer -->
+        <p class="mt-12 text-zinc-600 text-sm">
+            Powered by Spotify • YouTube • FastAPI
+        </p>
+
+    </div>
+
+</body>
+</html>

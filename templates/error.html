@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversion Failed | Frespo</title>
+    
+    <!-- Premium Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --spotify-green: #1DB954;
+            --spotify-green-hover: #1ed760;
+            --bg-base: #040405;
+            --bg-card: rgba(18, 18, 18, 0.65);
+            --border-light: rgba(255, 255, 255, 0.06);
+            --text-main: #f4f4f6;
+            --text-muted: #a1a1aa;
+            --error-red: #ff5555;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
+            background: 
+                radial-gradient(circle at 15% 15%, rgba(29, 185, 84, 0.1), transparent 45%),
+                radial-gradient(circle at 85% 85%, rgba(255, 85, 85, 0.04), transparent 45%),
+                var(--bg-base);
+            color: var(--text-main);
+            padding: 20px;
+            overflow: hidden; /* Strict scroll prevention on desktop */
+        }
+
+        /* Fixed Top Identity */
+        .brand {
+            position: absolute;
+            top: 40px;
+            left: 40px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: -0.04em;
+        }
+
+        .brand span {
+            color: var(--spotify-green);
+        }
+
+        /* Landscape Split-Panel Card Layout */
+        .card {
+            width: 100%;
+            max-width: 900px; /* Wider footprint to distribute heights horizontally */
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+            border-radius: 24px;
+            padding: 40px;
+            backdrop-filter: blur(32px);
+            -webkit-backdrop-filter: blur(32px);
+            box-shadow: 0 32px 64px -16px rgba(0, 0, 0, 0.7);
+            
+            display: grid;
+            grid-template-columns: 1.1fr 1.3fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        /* Left Side: Status Reporting */
+        .status-panel {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .status-badge {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 64px;
+            height: 64px;
+            background: rgba(255, 85, 85, 0.06);
+            border: 1px solid rgba(255, 85, 85, 0.15);
+            border-radius: 20px;
+            margin-bottom: 20px;
+            color: var(--error-red);
+        }
+
+        h1 {
+            font-size: 1.9rem;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            margin-bottom: 8px;
+        }
+
+        .subtitle {
+            color: var(--text-muted);
+            margin-bottom: 24px;
+            font-size: 0.95rem;
+        }
+
+        .error-box {
+            width: 100%;
+            background: rgba(255, 85, 85, 0.03);
+            border: 1px solid rgba(255, 85, 85, 0.12);
+            border-radius: 12px;
+            padding: 14px 18px;
+            color: #fca5a5;
+            font-size: 0.88rem;
+            font-weight: 500;
+            line-height: 1.5;
+            word-break: break-word;
+            margin-bottom: 28px;
+        }
+
+        /* Right Side: Interactive Walkthrough Panel */
+        .help-panel {
+            background: rgba(255, 255, 255, 0.01);
+            border: 1px solid var(--border-light);
+            border-radius: 16px;
+            padding: 24px;
+        }
+
+        .help-panel h3 {
+            color: var(--spotify-green);
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .help-panel ol {
+            padding-left: 18px;
+            color: #e4e4e7;
+            font-size: 0.88rem;
+            line-height: 1.7;
+        }
+
+        .help-panel li {
+            margin-bottom: 6px;
+        }
+
+        .help-panel li::marker {
+            color: var(--spotify-green);
+            font-weight: 600;
+        }
+
+        .help-panel strong {
+            color: #ffffff;
+            background: rgba(255, 255, 255, 0.06);
+            padding: 1px 5px;
+            border-radius: 4px;
+        }
+
+        /* Call To Action Button styling */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            background: var(--spotify-green);
+            color: #ffffff;
+            padding: 14px 36px;
+            border-radius: 500px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.2s ease;
+        }
+
+        .btn:hover {
+            background: var(--spotify-green-hover);
+            transform: scale(1.03);
+            box-shadow: 0 8px 24px rgba(29, 185, 84, 0.2);
+        }
+
+        /* Responsive Fallback for Tablets/Mobiles */
+        @media (max-width: 840px) {
+            body {
+                height: auto;
+                overflow: auto;
+                padding: 80px 24px 40px 24px;
+            }
+            .brand {
+                top: 24px;
+                left: 24px;
+            }
+            .card {
+                grid-template-columns: 1fr;
+                gap: 32px;
+                padding: 32px 24px;
+            }
+            .error-box {
+                margin-bottom: 0;
+            }
+            .btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="brand">
+    Fres<span>po</span>
+</div>
+
+<div class="card">
+    
+    <!-- Left Module: Status & Action -->
+    <div class="status-panel">
+        <div class="status-badge">
+            <svg width="28" height="28" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+            </svg>
+        </div>
+        <h1>Conversion Failed</h1>
+        <p class="subtitle">We couldn't read this playlist link layout.</p>
+        
+        <div class="error-box">
+            {{ error_message }}
+        </div>
+
+        <a href="/" class="btn">
+            Try Another Playlist
+        </a>
+    </div>
+
+    <!-- Right Module: Troubleshooting Walkthrough Layout -->
+    <div class="help-panel">
+        <h3>
+            <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+            Quick Workaround
+        </h3>
+        
+        <ol>
+            <li>Open the playlist page inside <strong>Spotify</strong>.</li>
+            <li>Click the <strong>⋯ More Options</strong> icon utility.</li>
+            <li>Select the <strong>Add to other playlist</strong> control.</li>
+            <li>Instantiate a new playlist folder container.</li>
+            <li>Copy the brand new share link URL generated.</li>
+            <li>Paste your new URL layout link back into Frespo.</li>
+        </ol>
+    </div>
+
+</div>
+
+</body>
+</html>

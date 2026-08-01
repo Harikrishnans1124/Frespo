@@ -1,15 +1,18 @@
 import spotipy   #helps to talk to spotifyAPI
 from spotipy.oauth2 import SpotifyOAuth    #handles login and shit
 import psycopg2
+from dotenv import load_dotenv
+import os
+load_dotenv()
 
 
 #the database is being created in this step 
 
 
 sp=spotipy.Spotify(auth_manager=SpotifyOAuth(
-client_id="e0c56dcf3b484da7990cdad4dff6921a",
-    client_secret="492b4fb1f32e496ab33a710a98692a09",
-    redirect_uri="http://127.0.0.1:8888/callback",
+    client_id=os.getenv("SPOTIFY_CLIENT_ID"),
+    client_secret=os.getenv("SPOTIFY_CLIENT_SECRET"),
+    redirect_uri=os.getenv("SPOTIFY_REDIRECT_URI"),
     scope="playlist-read-private playlist-read-collaborative"
 ))
 
@@ -26,11 +29,13 @@ client_id="e0c56dcf3b484da7990cdad4dff6921a",
 def playlistsp(playlistid):
     playlistname=sp.playlist(playlist_id=playlistid)
     
-    conn=psycopg2.connect(database="Frespo",
-                    user="postgres",
-                    password="88482",
-                    host="localhost",
-                    port=5432)
+    conn = psycopg2.connect(
+        database=os.getenv("DB_NAME"),
+        user=os.getenv("DB_USER"),
+        password=os.getenv("DB_PASSWORD"),
+        host=os.getenv("DB_HOST"),
+        port=os.getenv("DB_PORT")
+    )
     curr=conn.cursor()
     tracks=sp.playlist_tracks(playlist_id=playlistid)
 

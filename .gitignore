@@ -1,7 +1,29 @@
+# Environment
 .env
+
+# Virtual environments
 venv/
 .venv/
+
+# Python
 __pycache__/
-client_secret*.json
 *.pyc
-.cache
+*.pyo
+
+# OAuth
+client_secret*.json
+token.json
+
+# Cache
+.cache/
+
+# VS Code
+.vscode/
+Frespo.code-workspace
+
+# Logs
+*.log
+
+# OS
+.DS_Store
+Thumbs.db

@@ -4,6 +4,7 @@ from playlist_create import playlistidfn
 from googleapiclient.errors import HttpError
 import psycopg2
 import time
+from dotenv import load_dotenv
 def youtube_convert(playlistname,playlistdb_id):  #convert the songs in db to songs in youtube.
     creds=authenticate()
 

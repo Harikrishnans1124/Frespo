@@ -1,6 +1,7 @@
 from googleapiclient.discovery import build
 from youtube_auth import authenticate
 from playlist_create import playlistidfn
+from db import database_connection
 from googleapiclient.errors import HttpError
 import psycopg2
 import time
@@ -13,11 +14,7 @@ def youtube_convert(playlistname,playlistdb_id):  #convert the songs in db to so
 
     ytobj=build('youtube','v3',credentials=creds)
 
-    conn=psycopg2.connect(database="Frespo",
-                        user="postgres",
-                        password="88482",
-                        host="localhost",
-                        port="5432")
+    conn=database_connection()
     curr=conn.cursor()
 
     curr.execute(

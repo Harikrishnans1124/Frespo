@@ -7,7 +7,7 @@ from songs_insert import youtube_convert
 from spotipy.exceptions import SpotifyException
 from fastapi import BackgroundTasks
 import psycopg2
-
+from db import database_connection
 app=FastAPI()
 
 
@@ -28,11 +28,7 @@ templates = Jinja2Templates(
 )
 
 
-conn=psycopg2.connect(database="Frespo",
-                      user="postgres",
-                      password="88482",
-                      host="localhost",
-                      port="5432")
+conn=database_connection()
 
 curr=conn.cursor()
 

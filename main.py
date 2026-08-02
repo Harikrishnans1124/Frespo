@@ -3,6 +3,7 @@ from spotipy.oauth2 import SpotifyOAuth    #handles login and shit
 import psycopg2
 from dotenv import load_dotenv
 import os
+from db import database_connection
 load_dotenv()
 
 
@@ -29,13 +30,7 @@ sp=spotipy.Spotify(auth_manager=SpotifyOAuth(
 def playlistsp(playlistid):
     playlistname=sp.playlist(playlist_id=playlistid)
     
-    conn = psycopg2.connect(
-        database=os.getenv("DB_NAME"),
-        user=os.getenv("DB_USER"),
-        password=os.getenv("DB_PASSWORD"),
-        host=os.getenv("DB_HOST"),
-        port=os.getenv("DB_PORT")
-    )
+    conn = database_connection()
     curr=conn.cursor()
     tracks=sp.playlist_tracks(playlist_id=playlistid)
 
